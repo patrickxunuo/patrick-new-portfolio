@@ -63,9 +63,9 @@ export function getRandomDestination(dimension: number) {
 
 export function generateRandomColor() {
   // Generate random values for red, green, and blue channels
-  const red = Math.floor(Math.random() * 256);
-  const green = Math.floor(Math.random() * 256);
-  const blue = Math.floor(Math.random() * 256);
+  const red = Math.floor(Math.random() * 128 + 128); // Range: 128-255
+  const green = Math.floor(Math.random() * 128 + 128); // Range: 128-255
+  const blue = Math.floor(Math.random() * 128 + 128); // Range: 128-255
 
   // Create a CSS color string using the random values
   const color = `rgb(${red}, ${green}, ${blue})`;

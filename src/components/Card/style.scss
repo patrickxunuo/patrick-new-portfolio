@@ -11,4 +11,16 @@
     align-items: center;
     margin: 20px;
   }
+
+  .card__close {
+    cursor: pointer;
+    padding: 5px;
+  }
+}
+
+.card__backdrop {
+  background-color: #0005;
+  position: absolute;
+  z-index: 995;
+  inset: 0;
 }
