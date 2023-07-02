@@ -1,6 +1,7 @@
 import "./App.scss";
 import Ball from "./components/Ball";
 import Card from "./components/Card";
+import { GitHub, Instagram, Facebook } from "react-feather";
 
 function App() {
   return (
@@ -13,6 +14,13 @@ function App() {
       <Ball key="card-5" layoutId="card-5" delay={5} dimension={100} />
       <Ball key="card-6" layoutId="card-6" delay={6} dimension={100} />
       <Ball key="card-7" layoutId="card-7" delay={7} dimension={100} />
+      <div className="home__navigation">
+        <span className="patx">Pat X</span>
+        <div className="patx">.</div>
+        <GitHub color="hsla(210,18%,87%,1)" />
+        <Instagram color="green" />
+        <Facebook color="#1B74E4" />
+      </div>
     </div>
   );
 }

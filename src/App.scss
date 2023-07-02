@@ -3,4 +3,18 @@
   position: relative;
   background-color: #000;
   overflow: hidden;
+
+  .home__navigation {
+    display: flex;
+    gap: 8px;
+    align-items: flex-end;
+    z-index: 50;
+
+    .patx {
+      font-size: 300px;
+      height: 300px;
+      color: #fff;
+      font-family: thunder-light;
+    }
+  }
 }
