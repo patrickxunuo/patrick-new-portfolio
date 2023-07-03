@@ -8,7 +8,7 @@ interface GlobalState {
 
 interface CardProps {
   layoutId: string;
-  backgroundColor: string;
+  backgroundImage: string;
   dimension: number;
 }
 

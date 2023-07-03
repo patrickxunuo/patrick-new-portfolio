@@ -67,8 +67,13 @@ export function generateRandomColor() {
   const green = Math.floor(Math.random() * 128 + 128); // Range: 128-255
   const blue = Math.floor(Math.random() * 128 + 128); // Range: 128-255
 
-  // Create a CSS color string using the random values
-  const color = `rgb(${red}, ${green}, ${blue})`;
+  // Convert the decimal color values to hexadecimal
+  const hexRed = red.toString(16).padStart(2, "0");
+  const hexGreen = green.toString(16).padStart(2, "0");
+  const hexBlue = blue.toString(16).padStart(2, "0");
+
+  // Create a CSS color string using the hexadecimal values
+  const color = `#${hexRed}${hexGreen}${hexBlue}`;
 
   return color;
 }

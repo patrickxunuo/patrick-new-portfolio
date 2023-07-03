@@ -26,7 +26,7 @@ const Card = () => {
             height: 333,
           }}
           style={{
-            backgroundColor: activeCard.backgroundColor,
+            backgroundImage: activeCard.backgroundImage,
           }}
           exit={{
             scale: 0,

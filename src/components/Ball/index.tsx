@@ -21,14 +21,15 @@ import { applyCard } from "../../store/globalSlice.ts";
 import { useAppDispatch, useAppSelector } from "../../hooks";
 
 interface BallProps {
+  title: string;
   dimension: number; // in pixel
   layoutId: string;
   delay?: number; // in second
 }
 
-const Ball = ({ dimension, layoutId, delay = 0 }: BallProps) => {
+const Ball = ({ title, dimension, layoutId, delay = 0 }: BallProps) => {
   const delayRef = useRef(delay * 1000);
-  const colorRef = useRef(generateRandomColor());
+  const colorRef = useRef([generateRandomColor(), generateRandomColor()]);
   const x = useMotionValue(generateBallInitialX());
   const y = useMotionValue(generateBallInitialY());
   const xSmooth = useSpring(x, { damping: 50, stiffness: 500 });
@@ -52,7 +53,7 @@ const Ball = ({ dimension, layoutId, delay = 0 }: BallProps) => {
       applyCard({
         layoutId,
         dimension,
-        backgroundColor: colorRef.current,
+        backgroundImage: `linear-gradient(180deg, ${colorRef.current?.[0]}, ${colorRef.current?.[1]})`,
       })
     );
   };
@@ -128,10 +129,12 @@ const Ball = ({ dimension, layoutId, delay = 0 }: BallProps) => {
             width: dimension,
             height: dimension,
             zIndex: getRandomInteger(0, 100),
-            backgroundColor: colorRef.current,
+            backgroundImage: `linear-gradient(${colorRef.current?.[0]}, ${colorRef.current?.[1]})`,
           }}
           onClick={applyLayout}
-        />
+        >
+          <span className="ball__title">{title}</span>
+        </motion.div>
       )}
     </AnimatePresence>
   );
