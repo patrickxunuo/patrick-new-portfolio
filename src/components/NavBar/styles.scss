@@ -1,0 +1,47 @@
+.nav-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  nav {
+    font-family: "Nunito", sans-serif;
+    position: relative;
+
+    ul {
+      list-style: none;
+      display: flex;
+      padding: 0;
+      margin: 0;
+      z-index: 5;
+
+      li {
+        color: darkslategrey;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0 20px;
+        border-radius: 10px;
+        transition: opacity 0.5s ease-in-out;
+        cursor: pointer;
+
+        a {
+          color: var(--text);
+          text-decoration: none;
+          font-family: var(--main-font);
+        }
+      }
+    }
+
+    .nav-backdrop {
+      position: absolute;
+      height: 30px;
+      border-radius: 10px;
+      background: var(--secondary);
+      bottom: -4px;
+      z-index: -5;
+      cursor: pointer;
+      transition: left 0.8s cubic-bezier(0.755, 0.04, 0.355, 1),
+        width 0.7s cubic-bezier(0.25, 0.25, 0.75, 0.75) 0.1s;
+    }
+  }
+}

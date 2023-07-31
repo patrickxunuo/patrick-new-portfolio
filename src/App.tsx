@@ -1,33 +1,32 @@
 import "./App.scss";
-import Card from "./components/Card";
-import { GitHub, Instagram, Facebook, Circle } from "react-feather";
-import Balls from "./components/Balls";
+import Home from "./pages/home";
+import Layout from "./components/Layout";
+import { Suspense } from "react";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Projects from "./pages/projects";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Layout />,
+    children: [
+      {
+        path: "/home",
+        element: <Home />,
+      },
+      {
+        path: "/projects",
+        element: <Projects />,
+      },
+    ],
+  },
+]);
 
 function App() {
   return (
-    <div className="dome">
-      <Card />
-      <Balls />
-      <div className="home__navigation">
-        <span className="patx">Pat X</span>
-        <Circle color="#fff" />
-        <div className="home__navigation__btn__wrap">
-          <div className="home__navigation__btn">
-            <GitHub size="14" color="hsla(210,18%,87%,1)" />
-          </div>
-        </div>
-        <div className="home__navigation__btn__wrap">
-          <div className="home__navigation__btn">
-            <Instagram size="14" color="green" />
-          </div>
-        </div>
-        <div className="home__navigation__btn__wrap">
-          <div className="home__navigation__btn">
-            <Facebook size="14" color="#1B74E4" />
-          </div>
-        </div>
-      </div>
-    </div>
+    <Suspense fallback={<p>Loading...</p>}>
+      <RouterProvider router={router} />
+    </Suspense>
   );
 }
 

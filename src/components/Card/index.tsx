@@ -2,11 +2,16 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useAppDispatch, useAppSelector } from "../../hooks";
 import "./style.scss";
 import { clearCard } from "../../store/globalSlice.ts";
-import { X } from "react-feather";
+import { useMemo } from "react";
 
 const Card = () => {
   const activeCard = useAppSelector((s) => s.global.activeCard);
+  const events = useAppSelector((s) => s.eventState.events);
   const dispatch = useAppDispatch();
+
+  const activeEvent = useMemo(() => {
+    return events.find((event) => event.id === activeCard?.layoutId);
+  }, [activeCard?.layoutId]);
 
   const removeCard = () => dispatch(clearCard());
 
@@ -34,10 +39,7 @@ const Card = () => {
           }}
         >
           <div className="card__title">
-            <span>{activeCard.layoutId}</span>
-            <div className="card__close" onClick={removeCard}>
-              <X />
-            </div>
+            <span>{activeEvent?.name}</span>
           </div>
         </motion.div>
       )}
@@ -48,6 +50,7 @@ const Card = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
+          onClick={removeCard}
         />
       )}
     </AnimatePresence>
