@@ -1,12 +1,19 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import React, {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import { useLocation } from "react-router";
 import { Link } from "react-router-dom";
 import "./styles.scss";
 
 interface NavItem {
-  name: string;
+  name: string | React.ReactNode;
   to?: string;
   onClick?: () => void;
+  href?: string;
 }
 
 interface NavBarProps {
@@ -33,7 +40,7 @@ export const NavBar = ({ navItems }: NavBarProps) => {
   }, [navItems, pathname]);
 
   const left = useMemo(
-    () => itemRects[activeIndex]?.left - parentLeft,
+    () => itemRects[activeIndex]?.left - parentLeft - 20,
     [itemRects, activeIndex, pathname]
   );
 
@@ -44,14 +51,16 @@ export const NavBar = ({ navItems }: NavBarProps) => {
 
   return (
     <div className="nav-container" onMouseLeave={updateOnLi}>
-      <nav>
+      <div className="shapes">
         <div
           style={{
             left,
             width,
           }}
-          className="nav-backdrop"
+          className="shape"
         />
+      </div>
+      <nav>
         <ul ref={ulRef}>
           {navItems?.map((item, index) => (
             <li
@@ -62,7 +71,9 @@ export const NavBar = ({ navItems }: NavBarProps) => {
               {item.to ? (
                 <Link to={item.to}>{item.name}</Link>
               ) : (
-                <a onClick={item.onClick}>{item.name}</a>
+                <a onClick={item.onClick} href={item.href} target="_blank">
+                  {item.name}
+                </a>
               )}
             </li>
           ))}

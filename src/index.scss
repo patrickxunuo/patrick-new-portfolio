@@ -15,6 +15,7 @@
   --secondary: #f5f0f0;
   --accent: #324c4c;
   --main-font: "amstelvar";
+  --font-ox: "oxygen";
 }
 
 @media (prefers-color-scheme: dark) {
@@ -39,4 +40,9 @@ img {
 @font-face {
   font-family: "amstelvar";
   src: url("./assets/fonts/Amstelvar-Roman.ttf") format("opentype");
+}
+
+@font-face {
+  font-family: "oxygen";
+  src: url("./assets/fonts/Oxygen-Regular.ttf") format("opentype");
 }

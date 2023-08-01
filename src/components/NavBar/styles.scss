@@ -2,17 +2,42 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
+
+  .shapes {
+    position: relative;
+    height: 100%;
+    width: 470px;
+    background-color: var(--accent);
+    overflow: hidden;
+
+    .shape {
+      position: absolute;
+      height: 30px;
+      border-radius: 10px;
+      background-color: var(--text);
+      box-shadow: 0 0 10px #000;
+      bottom: 13px;
+      cursor: pointer;
+      transition: left 0.8s cubic-bezier(0.755, 0.04, 0.355, 1),
+        width 0.7s cubic-bezier(0.25, 0.25, 0.75, 0.75) 0.1s;
+    }
+  }
 
   nav {
     font-family: "Nunito", sans-serif;
-    position: relative;
+    position: absolute;
+    width: 470px;
+    right: 0;
+    background: #fff;
+    mix-blend-mode: screen;
+    padding: 20px;
 
     ul {
       list-style: none;
       display: flex;
       padding: 0;
       margin: 0;
-      z-index: 5;
 
       li {
         color: darkslategrey;
@@ -25,23 +50,12 @@
         cursor: pointer;
 
         a {
+          font-weight: bold;
           color: var(--text);
           text-decoration: none;
-          font-family: var(--main-font);
+          font-family: var(--font-ox);
         }
       }
-    }
-
-    .nav-backdrop {
-      position: absolute;
-      height: 30px;
-      border-radius: 10px;
-      background: var(--secondary);
-      bottom: -4px;
-      z-index: -5;
-      cursor: pointer;
-      transition: left 0.8s cubic-bezier(0.755, 0.04, 0.355, 1),
-        width 0.7s cubic-bezier(0.25, 0.25, 0.75, 0.75) 0.1s;
     }
   }
 }
