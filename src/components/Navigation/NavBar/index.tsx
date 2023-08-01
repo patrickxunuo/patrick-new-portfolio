@@ -40,7 +40,7 @@ export const NavBar = ({ navItems }: NavBarProps) => {
   }, [navItems, pathname]);
 
   const left = useMemo(
-    () => itemRects[activeIndex]?.left - parentLeft - 20,
+    () => itemRects[activeIndex]?.left - parentLeft,
     [itemRects, activeIndex, pathname]
   );
 
@@ -51,16 +51,14 @@ export const NavBar = ({ navItems }: NavBarProps) => {
 
   return (
     <div className="nav-container" onMouseLeave={updateOnLi}>
-      <div className="shapes">
+      <nav>
         <div
           style={{
             left,
             width,
           }}
-          className="shape"
+          className="backdrop"
         />
-      </div>
-      <nav>
         <ul ref={ulRef}>
           {navItems?.map((item, index) => (
             <li

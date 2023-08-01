@@ -7,15 +7,14 @@ import Projects from "./pages/projects";
 
 const router = createBrowserRouter([
   {
-    path: "/",
     element: <Layout />,
     children: [
       {
-        path: "/home",
+        index: true,
         element: <Home />,
       },
       {
-        path: "/projects",
+        path: "projects",
         element: <Projects />,
       },
     ],

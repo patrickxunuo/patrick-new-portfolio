@@ -1,0 +1,15 @@
+.home__container {
+  height: calc(100vh - 60px);
+  width: 100vw;
+  display: grid;
+  place-content: center;
+  grid-template-columns: repeat(4, 100px);
+  gap: 50px;
+
+  .letter {
+    font-size: 150px;
+    font-family: var(--font-exp);
+    user-select: none;
+    color: var(--text);
+  }
+}

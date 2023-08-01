@@ -14,8 +14,10 @@
   --primary: #bbd2d3;
   --secondary: #f5f0f0;
   --accent: #324c4c;
+  --blue: #6500e3;
   --main-font: "amstelvar";
   --font-ox: "oxygen";
+  --font-exp: "expletus";
 }
 
 @media (prefers-color-scheme: dark) {
@@ -45,4 +47,9 @@ img {
 @font-face {
   font-family: "oxygen";
   src: url("./assets/fonts/Oxygen-Regular.ttf") format("opentype");
+}
+
+@font-face {
+  font-family: "expletus";
+  src: url("./assets/fonts/Expletus-Sans.ttf") format("opentype");
 }

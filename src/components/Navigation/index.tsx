@@ -1,10 +1,10 @@
 import "./style.scss";
 import Logo from "../../assets/images/logo.png";
-import { NavBar } from "../NavBar";
+import { NavBar } from "./NavBar";
 import { redirect } from "react-router-dom";
 
 const navItems = [
-  { name: "Home", to: "/home", onClick: () => console.log("clicked") },
+  { name: "Home", to: "/", onClick: () => console.log("clicked") },
   { name: "Projects", to: "/projects", onClick: () => redirect("/projects") },
   { name: "Life", to: "/life", onClick: () => console.log("clicked") },
   { name: "Contact", onClick: () => console.log("clicked") },
