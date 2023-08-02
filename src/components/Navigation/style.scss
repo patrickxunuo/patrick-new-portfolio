@@ -1,31 +1,9 @@
 .navbar {
   display: flex;
   justify-content: space-between;
-  padding-inline: 50px;
-}
-
-.nav-links {
-  display: grid;
-  grid-template-columns: repeat(4, 100px);
-}
-
-.nav-btn {
-  color: var(--text);
-  background-color: transparent;
-  border: none;
-  padding: 10px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  font-family: var(--main-font);
-  font-size: 1rem;
-}
-
-.nav-btn:hover {
-  background-color: var(--accent);
-}
-
-@media screen and (max-width: 768px) {
-  .nav-links {
-    flex-direction: column;
-  }
+  padding-inline: 50px 25px;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
 }
