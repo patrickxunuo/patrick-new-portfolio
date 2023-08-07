@@ -5,26 +5,128 @@
   place-items: center;
 
   .home__content {
+    position: relative;
     display: grid;
     place-content: center;
-    grid-template-columns: repeat(4, 100px);
-    height: 400px;
+    grid-template-columns: repeat(4, 150px);
+    height: 250px;
     gap: 50px;
+
+    .letter__container {
+      position: relative;
+      height: 250px;
+      overflow: hidden;
+
+      .letter__wrap {
+        position: absolute;
+        width: 100%;
+        top: 50%;
+        transform: translateY(-50%);
+
+        .letter {
+          display: grid;
+          place-items: center;
+          font-size: 150px;
+          font-family: var(--font-exp);
+          user-select: none;
+          color: var(--text);
+        }
+      }
+    }
   }
 
-  .letter {
-    position: relative;
-    height: 400px;
-    overflow: hidden;
+  .ready {
+    .letter__container {
+      display: grid;
+      place-items: center;
 
-    span {
-      position: absolute;
-      font-size: 150px;
-      font-family: var(--font-exp);
-      user-select: none;
-      color: var(--text);
-      top: 50%;
-      transform: translateY(-50%);
+      .letter {
+        display: grid;
+        place-items: center;
+        font-size: 150px;
+        font-family: var(--font-exp);
+        user-select: none;
+        color: var(--text);
+        cursor: pointer;
+      }
     }
+
+    .small__letter__container {
+      position: absolute;
+      display: flex;
+      gap: 4px;
+      bottom: 0;
+      z-index: 99;
+
+      &:is(.left) {
+        left: 0;
+      }
+
+      &:is(.right) {
+        right: 0;
+      }
+
+      .letter {
+        display: grid;
+        place-items: center;
+        font-size: 50px;
+        font-family: var(--font-exp);
+        user-select: none;
+        color: var(--secondary);
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.tilt__image {
+  position: absolute;
+  inset: 15vh 15vw;
+  background-size: cover;
+  //mix-blend-mode: luminosity;
+  border-radius: 10px;
+  transition: all;
+  z-index: -10;
+  transform-style: preserve-3d;
+  transform: perspective(5000px) rotateY(var(--rotateX)) rotateX(var(--rotateY));
+
+  &:is(.p) {
+    background-image: url("../../assets/images/project.jpg");
+
+    &::after {
+      background-color: var(--accent);
+    }
+  }
+
+  &:is(.a) {
+    background-image: url("../../assets/images/aboutme.jpg");
+
+    &::after {
+      background-color: var(--blue);
+    }
+  }
+
+  &:is(.t) {
+    background-image: url("../../assets/images/testimony.jpg");
+
+    &::after {
+      background-color: var(--text);
+    }
+  }
+
+  &:is(.x) {
+    background-image: url("../../assets/images/experience.jpg");
+
+    &::after {
+      background-color: var(--secondary);
+    }
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 15vw;
+    transition: color 200ms ease-in-out;
+    border-radius: 5px;
   }
 }
