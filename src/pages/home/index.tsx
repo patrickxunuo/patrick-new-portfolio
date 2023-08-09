@@ -2,6 +2,7 @@ import { AnimatePresence, motion, Variants } from "framer-motion";
 import "./styles.scss";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { rotateElement } from "../../utils.ts";
+import { ResetSvg } from "../../components/Svg/ResetSvg.tsx";
 
 const parentVariants: Variants = {
   hidden: {
@@ -160,6 +161,7 @@ const Home = () => {
       <AnimatePresence>
         {mode === Modes.project && (
           <motion.div
+            key="image_p"
             ref={(el) => (imageContainerRef.current[0] = el)}
             className={imageClassName}
             initial={{ opacity: 0 }}
@@ -169,6 +171,7 @@ const Home = () => {
         )}
         {mode === Modes.aboutme && (
           <motion.div
+            key="image_a"
             ref={(el) => (imageContainerRef.current[1] = el)}
             className={imageClassName}
             initial={{ opacity: 0 }}
@@ -178,6 +181,7 @@ const Home = () => {
         )}
         {mode === Modes.testimony && (
           <motion.div
+            key="image_t"
             ref={(el) => (imageContainerRef.current[2] = el)}
             className={imageClassName}
             initial={{ opacity: 0 }}
@@ -187,6 +191,7 @@ const Home = () => {
         )}
         {mode === Modes.experience && (
           <motion.div
+            key="image_x"
             ref={(el) => (imageContainerRef.current[3] = el)}
             className={imageClassName}
             initial={{ opacity: 0 }}
@@ -196,6 +201,11 @@ const Home = () => {
         )}
       </AnimatePresence>
       <div className="home__container">
+        {mode && (
+          <div className="reset__svg" onClick={clearMode}>
+            <ResetSvg />
+          </div>
+        )}
         {isReady ? (
           <div className="home__content ready">
             <SmallLetters
