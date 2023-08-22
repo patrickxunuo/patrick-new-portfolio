@@ -28,6 +28,39 @@ const letterVariants: Variants = {
   },
 };
 
+const toRightParentVariants: Variants = {
+  hidden: {
+    opacity: 0,
+  },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+};
+
+const toRightChildrenVariants: Variants = {
+  hidden: {
+    left: -100,
+  },
+  show: {
+    left: 0,
+    transition: {
+      duration: 0.3,
+      ease: [0.43, 0.13, 0.23, 0.96],
+    },
+  },
+  exit: {
+    opacity: 0,
+    left: -100,
+    transition: {
+      duration: 0.3,
+      ease: [0.43, 0.13, 0.23, 0.96],
+    },
+  },
+};
+
 enum Modes {
   project = "project",
   aboutme = "aboutme",
@@ -189,7 +222,7 @@ const Home = () => {
             />
             <div className="letter__container">
               <AnimatePresence>
-                {(mode == null || mode === Modes.project) && (
+                {mode == null && (
                   <motion.div
                     layoutId="layout_p"
                     className="letter"
@@ -200,9 +233,33 @@ const Home = () => {
                 )}
               </AnimatePresence>
             </div>
+            <AnimatePresence>
+              {mode === Modes.project && (
+                <motion.div
+                  variants={toRightParentVariants}
+                  initial="hidden"
+                  animate="show"
+                  className="suffix"
+                >
+                  {"Projects".split("").map((letter, index) => (
+                    <div key={index}>
+                      <motion.span
+                        variants={toRightChildrenVariants}
+                        exit={letter === "P" ? "" : "exit"}
+                        layoutId={
+                          letter === "P" ? "layout_p" : `layout_${index}`
+                        }
+                      >
+                        {letter}
+                      </motion.span>
+                    </div>
+                  ))}
+                </motion.div>
+              )}
+            </AnimatePresence>
             <div className="letter__container">
               <AnimatePresence>
-                {(mode == null || mode === Modes.aboutme) && (
+                {mode == null && (
                   <motion.div
                     layoutId="layout_a"
                     className="letter"
@@ -213,9 +270,33 @@ const Home = () => {
                 )}
               </AnimatePresence>
             </div>
+            <AnimatePresence>
+              {mode === Modes.aboutme && (
+                <motion.div
+                  variants={toRightParentVariants}
+                  initial="hidden"
+                  animate="show"
+                  className="suffix"
+                >
+                  {"About Me".split("").map((letter, index) => (
+                    <div key={index}>
+                      <motion.span
+                        variants={toRightChildrenVariants}
+                        exit={letter === "A" ? "" : "exit"}
+                        layoutId={
+                          letter === "A" ? "layout_a" : `layout_${index}`
+                        }
+                      >
+                        {letter}
+                      </motion.span>
+                    </div>
+                  ))}
+                </motion.div>
+              )}
+            </AnimatePresence>
             <div className="letter__container">
               <AnimatePresence>
-                {(mode == null || mode === Modes.testimony) && (
+                {mode == null && (
                   <motion.div
                     layoutId="layout_t"
                     className="letter"
@@ -226,9 +307,33 @@ const Home = () => {
                 )}
               </AnimatePresence>
             </div>
+            <AnimatePresence>
+              {mode === Modes.testimony && (
+                <motion.div
+                  variants={toRightParentVariants}
+                  initial="hidden"
+                  animate="show"
+                  className="suffix let9"
+                >
+                  {"Testimony".split("").map((letter, index) => (
+                    <div key={index}>
+                      <motion.span
+                        variants={toRightChildrenVariants}
+                        exit={letter === "T" ? "" : "exit"}
+                        layoutId={
+                          letter === "T" ? "layout_t" : `layout_${index}`
+                        }
+                      >
+                        {letter}
+                      </motion.span>
+                    </div>
+                  ))}
+                </motion.div>
+              )}
+            </AnimatePresence>
             <div className="letter__container">
               <AnimatePresence>
-                {(mode == null || mode === Modes.experience) && (
+                {mode == null && (
                   <motion.div
                     layoutId="layout_x"
                     className="letter"
@@ -239,6 +344,30 @@ const Home = () => {
                 )}
               </AnimatePresence>
             </div>
+            <AnimatePresence>
+              {mode === Modes.experience && (
+                <motion.div
+                  variants={toRightParentVariants}
+                  initial="hidden"
+                  animate="show"
+                  className="suffix let9"
+                >
+                  {"Xperience".split("").map((letter, index) => (
+                    <div key={index}>
+                      <motion.span
+                        variants={toRightChildrenVariants}
+                        exit={letter === "X" ? "" : "exit"}
+                        layoutId={
+                          letter === "X" ? "layout_x" : `layout_${index}`
+                        }
+                      >
+                        {letter}
+                      </motion.span>
+                    </div>
+                  ))}
+                </motion.div>
+              )}
+            </AnimatePresence>
             <SmallLetters
               key="right"
               position="right"
