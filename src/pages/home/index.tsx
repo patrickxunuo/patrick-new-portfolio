@@ -1,7 +1,6 @@
 import { AnimatePresence, motion, Variants } from "framer-motion";
 import "./styles.scss";
-import { useEffect, useMemo, useRef, useState } from "react";
-import { rotateElement } from "../../utils.ts";
+import { useEffect, useMemo, useState } from "react";
 import { ResetSvg } from "../../components/Svg/ResetSvg.tsx";
 
 const parentVariants: Variants = {
@@ -51,8 +50,8 @@ const SmallLetters = ({
       <AnimatePresence>
         {mode !== Modes.project && position === "left" && (
           <motion.span
+            key="p"
             onClick={() => setMode(Modes.project)}
-            layout="preserve-aspect"
             layoutId="layout_p"
             className="letter"
           >
@@ -63,8 +62,8 @@ const SmallLetters = ({
           position === "left") ||
           (mode === Modes.project && position === "right")) && (
           <motion.span
+            key="a"
             onClick={() => setMode(Modes.aboutme)}
-            layout="preserve-aspect"
             layoutId="layout_a"
             className="letter"
           >
@@ -75,8 +74,8 @@ const SmallLetters = ({
           position === "right") ||
           (mode === Modes.experience && position === "left")) && (
           <motion.span
+            key="t"
             onClick={() => setMode(Modes.testimony)}
-            layout="preserve-aspect"
             layoutId="layout_t"
             className="letter"
           >
@@ -85,8 +84,8 @@ const SmallLetters = ({
         )}
         {mode !== Modes.experience && position === "right" && (
           <motion.span
+            key="x"
             onClick={() => setMode(Modes.experience)}
-            layout="preserve-aspect"
             layoutId="layout_x"
             className="letter"
           >
@@ -101,7 +100,6 @@ const SmallLetters = ({
 const Home = () => {
   const [isReady, setIsReady] = useState(false);
   const [mode, setMode] = useState<Modes | undefined>(undefined);
-  const imageContainerRef = useRef<HTMLDivElement[]>([]);
 
   useEffect(() => {
     setTimeout(() => {
@@ -109,28 +107,7 @@ const Home = () => {
     }, (0.25 * 3 + 0.8) * 1000);
   }, []);
 
-  const handleSetMode = (newMode: Modes) => {
-    setMode(newMode);
-    document.addEventListener("mousemove", (e) => {
-      let el;
-      switch (mode) {
-        case Modes.project:
-        default:
-          el = imageContainerRef.current[0];
-          break;
-        case Modes.aboutme:
-          el = imageContainerRef.current[1];
-          break;
-        case Modes.testimony:
-          el = imageContainerRef.current[2];
-          break;
-        case Modes.experience:
-          el = imageContainerRef.current[3];
-          break;
-      }
-      rotateElement(e, el);
-    });
-  };
+  const handleSetMode = (newMode: Modes) => setMode(newMode);
 
   const clearMode = () => setMode(undefined);
 
@@ -162,7 +139,6 @@ const Home = () => {
         {mode === Modes.project && (
           <motion.div
             key="image_p"
-            ref={(el) => (imageContainerRef.current[0] = el)}
             className={imageClassName}
             initial={{ opacity: 0 }}
             animate={{ opacity: 0.75 }}
@@ -172,7 +148,6 @@ const Home = () => {
         {mode === Modes.aboutme && (
           <motion.div
             key="image_a"
-            ref={(el) => (imageContainerRef.current[1] = el)}
             className={imageClassName}
             initial={{ opacity: 0 }}
             animate={{ opacity: 0.75 }}
@@ -182,7 +157,6 @@ const Home = () => {
         {mode === Modes.testimony && (
           <motion.div
             key="image_t"
-            ref={(el) => (imageContainerRef.current[2] = el)}
             className={imageClassName}
             initial={{ opacity: 0 }}
             animate={{ opacity: 0.75 }}
@@ -192,7 +166,6 @@ const Home = () => {
         {mode === Modes.experience && (
           <motion.div
             key="image_x"
-            ref={(el) => (imageContainerRef.current[3] = el)}
             className={imageClassName}
             initial={{ opacity: 0 }}
             animate={{ opacity: 0.75 }}
@@ -215,60 +188,56 @@ const Home = () => {
               setMode={handleSetMode}
             />
             <div className="letter__container">
-              {(mode == null || mode === Modes.project) && (
-                <AnimatePresence>
+              <AnimatePresence>
+                {(mode == null || mode === Modes.project) && (
                   <motion.div
-                    layout="preserve-aspect"
                     layoutId="layout_p"
                     className="letter"
                     onClick={() => handleSetMode(Modes.project)}
                   >
                     P
                   </motion.div>
-                </AnimatePresence>
-              )}
+                )}
+              </AnimatePresence>
             </div>
             <div className="letter__container">
-              {(mode == null || mode === Modes.aboutme) && (
-                <AnimatePresence>
+              <AnimatePresence>
+                {(mode == null || mode === Modes.aboutme) && (
                   <motion.div
-                    layout="preserve-aspect"
                     layoutId="layout_a"
                     className="letter"
                     onClick={() => handleSetMode(Modes.aboutme)}
                   >
                     A
                   </motion.div>
-                </AnimatePresence>
-              )}
+                )}
+              </AnimatePresence>
             </div>
             <div className="letter__container">
-              {(mode == null || mode === Modes.testimony) && (
-                <AnimatePresence>
+              <AnimatePresence>
+                {(mode == null || mode === Modes.testimony) && (
                   <motion.div
-                    layout="preserve-aspect"
                     layoutId="layout_t"
                     className="letter"
                     onClick={() => handleSetMode(Modes.testimony)}
                   >
                     T
                   </motion.div>
-                </AnimatePresence>
-              )}
+                )}
+              </AnimatePresence>
             </div>
             <div className="letter__container">
-              {(mode == null || mode === Modes.experience) && (
-                <AnimatePresence>
+              <AnimatePresence>
+                {(mode == null || mode === Modes.experience) && (
                   <motion.div
-                    layout="preserve-aspect"
                     layoutId="layout_x"
                     className="letter"
                     onClick={() => handleSetMode(Modes.experience)}
                   >
                     X
                   </motion.div>
-                </AnimatePresence>
-              )}
+                )}
+              </AnimatePresence>
             </div>
             <SmallLetters
               key="right"
