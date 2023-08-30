@@ -1,6 +1,6 @@
 import { AnimatePresence, motion, Variants } from "framer-motion";
 import "./styles.scss";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { ResetSvg } from "../../components/Svg/ResetSvg.tsx";
 
 const parentVariants: Variants = {
@@ -35,6 +35,7 @@ const toRightParentVariants: Variants = {
   show: {
     opacity: 1,
     transition: {
+      delay: 0.1,
       staggerChildren: 0.1,
     },
   },

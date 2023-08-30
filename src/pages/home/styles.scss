@@ -32,13 +32,17 @@
         position: relative;
         place-items: center;
         height: 100%;
-        //overflow: hidden;
         span {
+          user-select: none;
           position: relative;
           font-size: 110px;
           font-family: var(--font-exp);
           color: var(--text);
         }
+      }
+
+      .floating__letters {
+        transition: transform 0.5s, opacity 0.5s;
       }
     }
 
@@ -132,7 +136,7 @@
   position: absolute;
   inset: 15vh 15vw;
   background-size: cover;
-  //mix-blend-mode: luminosity;
+  mix-blend-mode: multiply;
   border-radius: 10px;
   transition: all;
   z-index: -10;
@@ -143,7 +147,7 @@
     background-image: url("../../assets/images/project.jpg");
 
     &::after {
-      background-color: var(--accent);
+      border: 10px solid var(--accent);
     }
   }
 
@@ -151,7 +155,7 @@
     background-image: url("../../assets/images/aboutme.jpg");
 
     &::after {
-      background-color: var(--blue);
+      border: 10px solid var(--blue);
     }
   }
 
@@ -159,7 +163,7 @@
     background-image: url("../../assets/images/testimony.jpg");
 
     &::after {
-      background-color: var(--text);
+      border: 10px solid var(--text);
     }
   }
 
@@ -167,14 +171,14 @@
     background-image: url("../../assets/images/experience.jpg");
 
     &::after {
-      background-color: var(--secondary);
+      border: 10px solid var(--secondary);
     }
   }
 
   &::after {
     content: "";
     position: absolute;
-    inset: 15vw;
+    inset: 25vh 10vw;
     transition: color 200ms ease-in-out;
     border-radius: 5px;
   }
