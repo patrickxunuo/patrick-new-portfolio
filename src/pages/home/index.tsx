@@ -1,6 +1,6 @@
 import { AnimatePresence, motion, Variants } from "framer-motion";
 import "./styles.scss";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { ResetSvg } from "../../components/Svg/ResetSvg.tsx";
 
 const parentVariants: Variants = {
@@ -65,7 +65,7 @@ const toRightChildrenVariants: Variants = {
 enum Modes {
   project = "project",
   aboutme = "aboutme",
-  testimony = "testimony",
+  techstack = "techstack",
   experience = "experience",
 }
 
@@ -92,7 +92,7 @@ const SmallLetters = ({
             P
           </motion.span>
         )}
-        {(((mode === Modes.testimony || mode === Modes.experience) &&
+        {(((mode === Modes.techstack || mode === Modes.experience) &&
           position === "left") ||
           (mode === Modes.project && position === "right")) && (
           <motion.span
@@ -109,7 +109,7 @@ const SmallLetters = ({
           (mode === Modes.experience && position === "left")) && (
           <motion.span
             key="t"
-            onClick={() => setMode(Modes.testimony)}
+            onClick={() => setMode(Modes.techstack)}
             layoutId="layout_t"
             className="letter"
           >
@@ -154,7 +154,7 @@ const Home = () => {
       case Modes.aboutme:
         className += "a";
         break;
-      case Modes.testimony:
+      case Modes.techstack:
         className += "t";
         break;
       case Modes.experience:
@@ -188,7 +188,7 @@ const Home = () => {
             exit={{ opacity: 0 }}
           />
         )}
-        {mode === Modes.testimony && (
+        {mode === Modes.techstack && (
           <motion.div
             key="image_t"
             className={imageClassName}
@@ -301,7 +301,7 @@ const Home = () => {
                   <motion.div
                     layoutId="layout_t"
                     className="letter"
-                    onClick={() => handleSetMode(Modes.testimony)}
+                    onClick={() => handleSetMode(Modes.techstack)}
                   >
                     T
                   </motion.div>
@@ -309,14 +309,14 @@ const Home = () => {
               </AnimatePresence>
             </div>
             <AnimatePresence>
-              {mode === Modes.testimony && (
+              {mode === Modes.techstack && (
                 <motion.div
                   variants={toRightParentVariants}
                   initial="hidden"
                   animate="show"
                   className="suffix let9"
                 >
-                  {"Testimony".split("").map((letter, index) => (
+                  {"TechStack".split("").map((letter, index) => (
                     <div key={index}>
                       <motion.span
                         variants={toRightChildrenVariants}

@@ -25,11 +25,18 @@
         cursor: pointer;
 
         a {
+          display: grid;
+          place-items: center;
           letter-spacing: 1px;
           font-weight: bold;
-          color: #000;
+          color: var(--text);
           text-decoration: none;
           font-family: var(--font-exp);
+
+          svg > path {
+            fill: var(--text);
+            transition: fill ease-in-out 300ms;
+          }
         }
       }
     }

@@ -8,6 +8,7 @@ import React, {
 import { useLocation } from "react-router";
 import { Link } from "react-router-dom";
 import "./styles.scss";
+import { DarkModeIcon, LightModeIcon } from "../Icons.tsx";
 
 interface NavItem {
   name: string | React.ReactNode;
@@ -24,6 +25,7 @@ export const NavBar = ({ navItems }: NavBarProps) => {
   const [activeIndex, setActivcIndex] = useState<number>(0);
   const [itemRects, setItemRects] = useState<any[]>([]);
   const [parentLeft, setParentLeft] = useState(0);
+  const [currentTheme, setCurrentTheme] = useState("light");
   const ulRef = useRef<HTMLUListElement>(null);
   const liRefs = useRef<HTMLLIElement[]>([]);
 
@@ -48,6 +50,17 @@ export const NavBar = ({ navItems }: NavBarProps) => {
     () => itemRects[activeIndex]?.right - itemRects[activeIndex]?.left,
     [itemRects, activeIndex, pathname]
   );
+
+  const toggleTheme = () => {
+    const root = document.documentElement;
+    if (currentTheme === "dark") {
+      root.setAttribute("data-theme", "light");
+      setCurrentTheme("light");
+    } else {
+      root.setAttribute("data-theme", "dark");
+      setCurrentTheme("dark");
+    }
+  };
 
   return (
     <div className="nav-container" onMouseLeave={updateOnLi}>
@@ -75,6 +88,11 @@ export const NavBar = ({ navItems }: NavBarProps) => {
               )}
             </li>
           ))}
+          <li onClick={toggleTheme}>
+            <a>
+              {currentTheme === "light" ? <DarkModeIcon /> : <LightModeIcon />}
+            </a>
+          </li>
         </ul>
       </nav>
     </div>

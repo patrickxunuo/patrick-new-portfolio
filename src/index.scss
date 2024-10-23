@@ -6,6 +6,8 @@
   &::after {
     box-sizing: border-box;
   }
+
+  transition: color ease-in-out 300ms, background-color ease-in-out 300ms;
 }
 
 :root {
@@ -18,6 +20,16 @@
   --main-font: "amstelvar";
   --font-ox: "oxygen";
   --font-exp: "expletus";
+}
+
+:root[data-theme="dark"] {
+  /* Dark theme */
+  --text: hsl(210 10% 62%);
+  --background: hsl(210 15% 15%);
+  --primary: hsl(210 50% 72%);
+  --secondary: hsl(210 15% 35%);
+  --accent: hsl(25 70% 45%);
+  --blue: hsl(210 100% 70%);
 }
 
 @media (prefers-color-scheme: dark) {
