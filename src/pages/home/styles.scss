@@ -136,7 +136,7 @@
   position: absolute;
   inset: 15vh 15vw;
   background-size: cover;
-  mix-blend-mode: multiply;
+  mix-blend-mode: normal;
   border-radius: 10px;
   transition: all;
   z-index: -10;
@@ -178,9 +178,20 @@
   &::after {
     content: "";
     position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.3); // Add a semi-transparent overlay
+    z-index: 1;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    &::after {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+  }
+
+  &:is(.p, .a, .t, .x)::after {
     inset: 25vh 10vw;
-    transition: color 200ms ease-in-out;
-    border-radius: 5px;
+    z-index: 2;
   }
 }
 

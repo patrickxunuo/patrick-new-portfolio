@@ -24,21 +24,21 @@
 
 :root[data-theme="dark"] {
   /* Dark theme */
-  --text: hsl(210 10% 62%);
-  --background: hsl(210 15% 15%);
-  --primary: hsl(210 50% 72%);
-  --secondary: hsl(210 15% 35%);
-  --accent: hsl(25 70% 45%);
-  --blue: hsl(210 100% 70%);
+  --text: hsl(210, 15%, 90%);
+  --background: hsl(210, 15%, 10%);
+  --primary: hsl(210, 50%, 60%);
+  --secondary: hsl(210, 15%, 25%);
+  --accent: hsl(25, 70%, 55%);
+  --blue: hsl(210, 100%, 70%);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --text: #fdfcfc;
-    --background: #090606;
-    --primary: #bbd2d3;
-    --secondary: #2e1f1f;
-    --accent: #74a3a3;
+    --text: #f0f0f0;
+    --background: #121212;
+    --primary: #a0c8c9;
+    --secondary: #2a2a2a;
+    --accent: #8fc7c7;
   }
 }
 
